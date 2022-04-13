@@ -8,25 +8,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f901ea5b-2f75-4240-9fd4-75a9f314b4d7" name="Changes" comment="" />
+    <list default="true" id="f901ea5b-2f75-4240-9fd4-75a9f314b4d7" name="Changes" comment="Primer commit carga de proyecto">
+      <change afterPath="$PROJECT_DIR$/Content/PickUps/BPJumpBoostPU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/PickUps/BPSpeedBoostPU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/PickUps/PickUpParent.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/B/U0/L2VJWQVYEN7IKH4TUTF94Y.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeosCV.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LeosCV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LeosCV/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/LeosCV/Private/PickUps/PickUpItem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/LeosCV/Private/PickUps/PickUpItem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/LeosCV/Public/PickUps/PickUpItem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/LeosCV/Public/PickUps/PickUpItem.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Marti/OneDrive/Documentos/Unreal Projects/LeosCV/Source/LeosCV/Private/PickUps/PickUpItem.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Marti/OneDrive/Documentos/Unreal Projects/LeosCV/Source/LeosCV/Private/PickUps/PickUpItem.cpp" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27kHEKobqUbkTG8TQn2g5IkLSa0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -158,8 +178,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649857054522</updated>
-      <workItem from="1649857065988" duration="948000" />
+      <workItem from="1649857065988" duration="18876000" />
     </task>
+    <task id="LOCAL-00001" summary="Primer commit carga de proyecto">
+      <created>1649858497618</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649858497618</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +207,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Primer commit carga de proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Primer commit carga de proyecto" />
   </component>
 </project>
