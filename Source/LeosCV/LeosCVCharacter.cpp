@@ -60,6 +60,8 @@ void ALeosCVCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &ALeosCVCharacter::Run);
+	PlayerInputComponent->BindAction("Run", IE_Released, this, &ALeosCVCharacter::StopRunning);
 
 	PlayerInputComponent->BindAxis("Move Forward / Backward", this, &ALeosCVCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("Move Right / Left", this, &ALeosCVCharacter::MoveRight);
@@ -75,7 +77,45 @@ void ALeosCVCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	// handle touch devices
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &ALeosCVCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &ALeosCVCharacter::TouchStopped);
+
+	DefaultHealth = 1;
+	Health = DefaultHealth;
+
+	DefaultLifes = 3;
+	CurrentLifes = DefaultLifes;
+	
 }
+
+void ALeosCVCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	OnTakeAnyDamage.AddDynamic(this, &ALeosCVCharacter::OnDamage);
+}
+
+void ALeosCVCharacter::FreezeCharacter(bool bFreeze)
+{
+	this->GetMesh()->bPauseAnims = bFreeze;
+}
+
+void ALeosCVCharacter::Die()
+{
+	// TODO: Die
+	
+}
+
+void ALeosCVCharacter::OnDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
+	AController* InstigatedBy, AActor* DamageCauser)
+{
+	Health = Health - Damage;
+	if(Health <= 0)
+	{
+		Die();
+	}
+}
+
+
+// --------------------- MOVEMENT AND INPUTS ---------------------- //
 
 void ALeosCVCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
@@ -85,6 +125,16 @@ void ALeosCVCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Locat
 void ALeosCVCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
 	StopJumping();
+}
+
+void ALeosCVCharacter::Run()
+{
+	GetCharacterMovement()->MaxWalkSpeed = 700;
+}
+
+void ALeosCVCharacter::StopRunning()
+{
+	GetCharacterMovement()->MaxWalkSpeed = 150;
 }
 
 void ALeosCVCharacter::TurnAtRate(float Rate)
@@ -97,11 +147,6 @@ void ALeosCVCharacter::LookUpAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * TurnRateGamepad * GetWorld()->GetDeltaSeconds());
-}
-
-void ALeosCVCharacter::FreezeCharacter(bool bFreeze)
-{
-	this->GetMesh()->bPauseAnims = bFreeze;
 }
 
 void ALeosCVCharacter::MoveForward(float Value)

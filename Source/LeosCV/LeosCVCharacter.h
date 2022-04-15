@@ -25,20 +25,43 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Input)
 	float TurnRateGamepad;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=PlayerStats)
-	float Health = 1;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category=PlayerStats)
+	float DefaultHealth;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category=PlayerStats)
+	float Health;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category=PlayerStats)
+	int DefaultLifes;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category=PlayerStats)
+	int CurrentLifes;
 
 protected:
 
 	UFUNCTION(BlueprintCallable)
 	void FreezeCharacter(bool bFreeze);
+	
+	UFUNCTION(BlueprintCallable)
+	void Die();
 
+	// --------------- DISPATCHERS ---------------- //
+
+	UFUNCTION()
+	void OnDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
+		AController* InstigatedBy, AActor* DamageCauser);
+	
+	// --------------- MOVEMENT ------------------- //
+	
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);
 
 	/** Called for side to side input */
 	void MoveRight(float Value);
+	
+	void Run();
 
+	void StopRunning();
 	/** 
 	 * Called via input to turn at a given rate. 
 	 * @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
@@ -62,10 +85,11 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
 
+	virtual void BeginPlay() override;
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };
-

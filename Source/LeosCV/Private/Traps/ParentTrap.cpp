@@ -3,6 +3,8 @@
 
 #include "Traps/ParentTrap.h"
 
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "LeosCV/LeosCVCharacter.h"
 
 // Sets default values
@@ -37,7 +39,8 @@ void AParentTrap::OnPlayerBeginOverlap(UPrimitiveComponent* OverlappedComponent,
 		bIsActive = true;
 		if(Damage > 0)
 		{
-			DetectedPlayer->Health = DetectedPlayer->Health - Damage;
+			UGameplayStatics::ApplyDamage(DetectedPlayer, Damage, nullptr,
+				this, nullptr);
 		}
 		TrapEffect(DetectedPlayer);
 		GetWorldTimerManager().SetTimer(ActiveTrapTimer, this, &AParentTrap::RestartTrap,
