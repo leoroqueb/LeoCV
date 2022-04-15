@@ -25,7 +25,13 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Input)
 	float TurnRateGamepad;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=PlayerStats)
+	float Health = 1;
+
 protected:
+
+	UFUNCTION(BlueprintCallable)
+	void FreezeCharacter(bool bFreeze);
 
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);

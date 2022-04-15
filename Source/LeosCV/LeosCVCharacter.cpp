@@ -99,6 +99,11 @@ void ALeosCVCharacter::LookUpAtRate(float Rate)
 	AddControllerPitchInput(Rate * TurnRateGamepad * GetWorld()->GetDeltaSeconds());
 }
 
+void ALeosCVCharacter::FreezeCharacter(bool bFreeze)
+{
+	this->GetMesh()->bPauseAnims = bFreeze;
+}
+
 void ALeosCVCharacter::MoveForward(float Value)
 {
 	if ((Controller != nullptr) && (Value != 0.0f))

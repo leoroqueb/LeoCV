@@ -21,7 +21,10 @@ APickUpItem::APickUpItem()
 	ItemLight->SetupAttachment(ItemStaticMesh);
 	
 	ItemStaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	
+
+	// Default values
+	bRotates = true;
+	bUpAndDown = true;
 }
 
 void APickUpItem::ActivateItem(const bool bActivate) const
