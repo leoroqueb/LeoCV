@@ -5,7 +5,7 @@
 
 #include "GameManagement/LeoCVSaveGame.h"
 #include "Kismet/GameplayStatics.h"
-#include "LeosCV/LeosCVCharacter.h"
+#include "Characters/MainPlayer.h"
 #include "LeosCV/LeosCVGameMode.h"
 
 // Sets default values
@@ -27,13 +27,12 @@ ACheckPoint::ACheckPoint()
 void ACheckPoint::OnStepOnCheckPoint(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if(ALeosCVCharacter* DetectedActor = Cast<ALeosCVCharacter>(OtherActor); DetectedActor)
+	if(Cast<AMainPlayer>(OtherActor))
 	{
 		ALeosCVGameMode* GM = Cast<ALeosCVGameMode>(UGameplayStatics::GetGameMode(this));
 		GM->SaveGame(CheckPointSpawnArrow->GetComponentTransform());
 	}
 }
-
 
 // Called when the game starts or when spawned
 void ACheckPoint::BeginPlay()

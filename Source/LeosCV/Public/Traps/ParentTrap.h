@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
-#include "LeosCV/LeosCVCharacter.h"
+#include "Characters/MainPlayer.h"
 #include "ParentTrap.generated.h"
 
 UCLASS()
@@ -54,7 +54,7 @@ protected:
 	void RestartTrap();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void TrapEffect(ALeosCVCharacter* Player);
+	void TrapEffect(AMainPlayer* Player);
 
 public:	
 	// Called every frame

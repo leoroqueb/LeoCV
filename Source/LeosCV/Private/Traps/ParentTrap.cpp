@@ -5,7 +5,7 @@
 
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "LeosCV/LeosCVCharacter.h"
+#include "Characters/MainPlayer.h"
 
 // Sets default values
 AParentTrap::AParentTrap()
@@ -33,7 +33,7 @@ void AParentTrap::BeginPlay()
 void AParentTrap::OnPlayerBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (ALeosCVCharacter* DetectedPlayer = Cast<ALeosCVCharacter>(OtherActor); DetectedPlayer && !bIsActive)
+	if (AMainPlayer* DetectedPlayer = Cast<AMainPlayer>(OtherActor); DetectedPlayer && !bIsActive)
 	{
 		// Prevent multicast
 		bIsActive = true;
@@ -41,8 +41,14 @@ void AParentTrap::OnPlayerBeginOverlap(UPrimitiveComponent* OverlappedComponent,
 		{
 			UGameplayStatics::ApplyDamage(DetectedPlayer, Damage, nullptr,
 				this, nullptr);
+
+			// Fix: Prevents to trap a player which is already dead
+			if(DetectedPlayer->Health > 0)
+			{
+				TrapEffect(DetectedPlayer);
+			}
 		}
-		TrapEffect(DetectedPlayer);
+		
 		GetWorldTimerManager().SetTimer(ActiveTrapTimer, this, &AParentTrap::RestartTrap,
 										0.1, false, CoolDownTime);
 	}

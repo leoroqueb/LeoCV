@@ -7,7 +7,7 @@
 #include "Components/SpotLightComponent.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/RotatingMovementComponent.h"
-#include "LeosCV/LeosCVCharacter.h"
+#include "Characters/MainPlayer.h"
 #include "PickUpItem.generated.h"
 
 UCLASS()
@@ -49,7 +49,7 @@ public:
 	float RespawnTime;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category="ItemData")
-	ALeosCVCharacter* ActorWhoPicked;
+	AMainPlayer* ActorWhoPicked;
 
 	//Code variables
 	FTimerHandle RespawnableHandler;

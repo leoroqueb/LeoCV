@@ -45,7 +45,7 @@ void APickUpItem::OnItemPickUpRangeOverlap(UPrimitiveComponent* OverlappedCompon
 					  const FHitResult &SweepResult )
 {
 	// Check actor who overlapped is player
-	ActorWhoPicked = Cast<ALeosCVCharacter>(OtherActor);
+	ActorWhoPicked = Cast<AMainPlayer>(OtherActor);
 	if(ActorWhoPicked)
 	{
 		if(RespawnTime > 0)

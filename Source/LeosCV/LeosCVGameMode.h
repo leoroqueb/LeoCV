@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "LeosCVCharacter.h"
+#include "Characters/MainPlayer.h"
 #include "GameManagement/LeoCVSaveGame.h"
 #include "GameFramework/GameModeBase.h"
 #include "LeosCVGameMode.generated.h"
@@ -20,17 +20,20 @@ protected:
 public:
 	ALeosCVGameMode();
 
-	UPROPERTY(Category="Saving")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving")
 	ULeoCVSaveGame* SaveGameInstance;
 
-	UPROPERTY(VisibleAnywhere, Category="References")
-	ALeosCVCharacter* MainPlayer;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="References")
+	AMainPlayer* MainPlayer;
 	
 	UFUNCTION(BlueprintCallable, Category="SavingSystem")
 	void SaveGame(FTransform PlayerPosition);
-
+	
+	/**
+	 * @returns bool. True if loaded was successful
+	 */
 	UFUNCTION(BlueprintCallable, Category="SavingSystem")
-	void LoadGame();
+	bool LoadGame();
 
 	UFUNCTION(BlueprintCallable, Category="SavingSystem")
 	bool CleanSavedSlot();
